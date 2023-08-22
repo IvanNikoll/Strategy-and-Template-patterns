@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponMaster : MonoBehaviour
+public class WeaponSwitcher : MonoBehaviour
 {
-    [SerializeField] WeaponS _weapon;
+    [SerializeField] Shooter _weapon;
 
     private void Awake()
     {
@@ -24,7 +22,8 @@ public class WeaponMaster : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            _weapon.SetShooter(new AKM(12, 12));
+            _weapon.SetShooter(new MachineGun(12, 12));
         }
+
     }
 }

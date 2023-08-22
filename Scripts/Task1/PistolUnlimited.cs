@@ -1,29 +1,9 @@
 using UnityEngine;
 
-public class PistolUnlimited : IShooter
+public class PistolUnlimited : Weapon, IShootable
 {
-    public PistolUnlimited()
-    {
-
-    }
-    
-    public void Reload()
-    {
-        
-    }
-
-    public void Shoot()
+    public override void Shoot()
     {
         Debug.Log("PEWPEW");
-    }
-
-    public void Update(float deltaTime)
-    {
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Shoot();    
-        }
-        
     }
 }

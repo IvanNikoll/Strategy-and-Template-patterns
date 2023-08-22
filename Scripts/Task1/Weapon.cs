@@ -1,20 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon: MonoBehaviour
+public abstract class Weapon
 {
-    public int MaxMagazineCapacity;
-    public int Bullets;
+    protected int Bullets;
+    protected int MaxBulletsInMagazine;
 
-    public Weapon(int maxMagazineCapacity, int bullets)
+    public void Reload()
     {
-        MaxMagazineCapacity = maxMagazineCapacity;
-        Bullets = bullets;
+        Bullets = MaxBulletsInMagazine;
     }
-
-    public void Shoot()
+    public virtual void Shoot()
     {
+
+        if (Bullets > 0)
+        {
+            Debug.Log("PEWPEW");
+            Bullets--;
+        }
+        else
+        {
+            Debug.Log("Press R to reload");
+        }
 
     }
 }
