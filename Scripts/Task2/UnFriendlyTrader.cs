@@ -1,24 +1,24 @@
-using Newtonsoft.Json.Linq;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UnFriendlyTrader : Trader
 {
-    private string _message = "OK, but don't tell anyone";
+    private const string _confirmTradingMessage = "OK, but don't tell anyone";
 
     public UnFriendlyTrader()
     {
-        MinKarma = 10;
+        MinKarmaToTrade = 10;
     }
 
-    protected override void ShowMessage(ICustomer customer)
+    protected override void Trade(Collider other, IBuyer customer)
     {
-        if (customer.PlayerKarma >= MinKarma)
+
+        if (customer.PlayerKarma >= MinKarmaToTrade)
         {
-            customer.ShowMessage(_message);
+            Message = _confirmTradingMessage;
         }
-        else customer.ShowMessage(RefuseTrading);
+
+        else Message = RefuseTradingMessage;
+        SendMessage(Message, customer);
     }
 }
 
